@@ -1,0 +1,474 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/shop-homepage.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <style>
+        button.accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+        }
+
+            button.accordion.active, button.accordion:hover {
+                background-color: #ccc;
+            }
+
+        div.panel {
+            padding: 0 18px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+        }
+
+        body {
+            font-family: Verdana, sans-serif;
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .row > .column {
+            padding: 0 8px;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .column {
+            float: left;
+            width: 25%;
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: black;
+        }
+
+        /* Modal Content */
+        .modal-content {
+            position: relative;
+            background-color: #fefefe;
+            margin: auto;
+            padding: 0;
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        /* The Close Button */
+        .close {
+            color: white;
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: #999;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+        .mySlides {
+            display: none;
+        }
+
+        .cursor {
+            cursor: pointer
+        }
+
+        /* Next & previous buttons */
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -50px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+            /* On hover, add a black background color with a little bit see-through */
+            .prev:hover,
+            .next:hover {
+                background-color: rgba(0, 0, 0, 0.8);
+            }
+
+        /* Number text (1/3 etc) */
+        .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+        }
+
+        img {
+            margin-bottom: -4px;
+        }
+
+        .caption-container {
+            text-align: center;
+            background-color: black;
+            padding: 2px 16px;
+            color: white;
+        }
+
+        .demo {
+            opacity: 0.6;
+        }
+
+            .active,
+            .demo:hover {
+                opacity: 1;
+            }
+
+        img.hover-shadow {
+            transition: 0.3s
+        }
+
+        .hover-shadow:hover {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+        }
+
+
+        .topnav {
+            overflow: hidden;
+            background-color: #e9e9e9;
+        }
+
+            .topnav a {
+                float: left;
+                display: block;
+                color: black;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
+
+                .topnav a:hover {
+                    background-color: #ddd;
+                    color: black;
+                }
+
+                .topnav a.active {
+                    background-color: #2196F3;
+                    color: white;
+                }
+
+            .topnav .search-container {
+                float: right;
+            }
+
+            .topnav input[type=text] {
+                padding: 6px;
+                margin-top: 8px;
+                font-size: 17px;
+                border: none;
+            }
+
+            .topnav .search-container button {
+                float: right;
+                padding: 6px 10px;
+                margin-top: 8px;
+                margin-right: 16px;
+                background: #ddd;
+                font-size: 17px;
+                border: none;
+                cursor: pointer;
+            }
+
+                .topnav .search-container button:hover {
+                    background: #ccc;
+                }
+
+        @media screen and (max-width: 600px) {
+            .topnav .search-container {
+                float: none;
+            }
+
+                .topnav a, .topnav input[type=text], .topnav .search-container button {
+                    float: none;
+                    display: block;
+                    text-align: left;
+                    width: 100%;
+                    margin: 0;
+                    padding: 14px;
+                }
+
+            .topnav input[type=text] {
+                border: 1px solid #ccc;
+            }
+        }
+    </style>
+
+
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="Asset Kayamas.html">Aset Kayamas</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="Asset Kayamas.html">
+                            Home <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="C:\IA Assingment\Register.html">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="faq.html">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about us.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="booking.html">Booking</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <img src="http://asetkayamas.com/wp-content/uploads/2017/08/HERMINGTONTIT.png" class="vc_single_image-img attachment-full">
+
+    <button class="accordion">Concept</button>
+    <div class="panel">
+        <p>The Hermington’s 46 storeys condominium offer 479 residential units of living space within its single-block construction. Beneath the modern architecture lies another emphasis on metropolitan living for urbanites in mind, as each unit features 2 car park units to accommodate your commuting needs.</p>
+        <p>The Hermington Condominium embodies contemporary architecture design and traditional suburban elements with a luxurious touch. Complete with sophisticated facilities and amenities, The Hermington aims to promote a green, healthy lifestyle to families who seek a luxurious living environment.</p>
+    </div>
+
+    <button class="accordion">Features and Facility</button>
+    <div class="panel">
+        <p>Enjoy a sense modern living and comforts with these sophisticated amenities at The Hermington</p>
+        <strong>Liast of Facilities</strong>
+        <ul>
+            <li>Gymnasium</li>
+            <li>Open Cafe [Space Only]</li>
+            <li>Reflexology Path</li>
+            <li>Outdoor Shower</li>
+            <li>Gazebo</li>
+            <li>Resident Lounge</li>
+            <li>Edible Garden</li>
+            <li>Sun Deck</li>
+            <li>Multi-Purpose Hall</li>
+            <li>Parlor</li>
+            <li>Half Basketball Court</li>
+            <li>Turf Mount</li>
+            <li>Laundrette</li>
+            <li>Breeze Deck</li>
+            <li>BBQ Area</li>
+            <li>Seating Area</li>
+            <li>Retail Shops</li>
+            <li>Sky Work</li>
+            <li>Picnic Area</li>
+            <li>Tropical Garden</li>
+            <li>Sauna [M/F]</li>
+            <li>Kid Zone</li>
+            <li>Palm Garden</li>
+            <li>Playground</li>
+            <li>Prayer Room [M/F]</li>
+            <li>Recreation Area</li>
+            <li>Swimming Pool</li>
+            <li>Kitchenette [Space Only]</li>
+            <li>Reading Area</li>
+            <li>Wading Pool</li>
+    </div>
+
+    <button class="accordion">Location</button>
+    <div class="panel">
+        <p>Just a short distance from downtown Kuala Lumpur, The Hermington offers quick accessibility to Mid Valley Megamall and endless dining options to discover. Being at the intersections of highways, getting in and out will be a breeze with smooth connections to New Pantai Expressway, Federal Highway, Smart Expressway, East–West Link Expressway, and a proposed MRT station.</p>
+        <strong>Amenities</strong>
+        <u1>
+            <li>5km to Midvalley Megamall</li>
+            <li>7km to Bangsar</li>
+            <li>8km to K.L city</li>
+            <li>9km to Bukit Jalil</li>
+            <li>12km to Sunway City</li>
+        </u1>
+        <img class="fancybox-image" src="http://asetkayamas.com/wp-content/uploads/2017/08/map-hermington.png">
+    </div>
+    <button class="accordion">Unit Plan and Specification</button>
+    <div class="panel">
+        <div class="wpb_wrapper">
+            <h2 style="text-align: left;font-family:Abril Fatface;font-weight:400;font-style:normal" class="vc_custom_heading heading_Type">TYPE A</h2>
+            <h2 style="text-align: left;font-family:Abril Fatface;font-weight:400;font-style:normal" class="vc_custom_heading subheading_Type">Built-Up Area: 1,075sqft</h2>
+            <div class="wpb_single_image wpb_content_element vc_align_left">
+                <figure class="wpb_wrapper vc_figure">
+                    <div class="vc_single_image-wrapper   vc_box_border_grey">
+                        <span class="fot_room">3</span><img src="http://asetkayamas.com/wp-content/themes/nrgevent/assets/img/bedg.png" class="vc_single_image-img attachment-full">
+                        <span class="fot_room">2</span><img src="http://asetkayamas.com/wp-content/themes/nrgevent/assets/img/bathroomg.png" class="vc_single_image-img attachment-full">
+                    </div>
+                </figure>
+            </div>
+            <div class="wpb_single_image wpb_content_element vc_align_left">
+
+            </div>
+            <div class="vc_btn3-container  button_prop type_room vc_btn3-inline">
+                <a class="vc_general vc_btn3 vc_btn3-size-xs vc_btn3-shape-rounded vc_btn3-style-modern vc_btn3-color-white" href="http://asetkayamas.com/wp-content/uploads/2017/08/TYPEA-HERMING.png" title="">VIEW FLOOR PLAN / SPEC</a>
+
+            </div>
+        </div>
+        <div class="vc_column-inner ">
+            <div class="wpb_wrapper">
+                <h2 style="text-align: left;font-family:Abril Fatface;font-weight:400;font-style:normal" class="vc_custom_heading heading_Type">TYPE B</h2>
+                <h2 style="text-align: left;font-family:Abril Fatface;font-weight:400;font-style:normal" class="vc_custom_heading subheading_Type">Built-Up Area: 1,075sqft</h2>
+                <div class="wpb_single_image wpb_content_element vc_align_left">
+                    <figure class="wpb_wrapper vc_figure">
+                        <div class="vc_single_image-wrapper   vc_box_border_grey">
+                            <span class="fot_room">3</span><img src="http://asetkayamas.com/wp-content/themes/nrgevent/assets/img/bedg.png" class="vc_single_image-img attachment-full">
+                            <span class="fot_room">2</span><img src="http://asetkayamas.com/wp-content/themes/nrgevent/assets/img/bathroomg.png" class="vc_single_image-img attachment-full">
+                        </div>
+                    </figure>
+                </div>
+                <div class="wpb_single_image wpb_content_element vc_align_left">
+
+                </div>
+                <div class="vc_btn3-container  button_prop type_room vc_btn3-inline">
+                    <a class="vc_general vc_btn3 vc_btn3-size-xs vc_btn3-shape-rounded vc_btn3-style-modern vc_btn3-color-white" href="http://asetkayamas.com/wp-content/uploads/2017/08/TYPEB-HERMING.png" title="">VIEW FLOOR PLAN / SPEC</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].onclick = function () {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            }
+        }
+    </script>
+
+    <script>
+        function openModal() {
+            document.getElementById('myModal').style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById('myModal').style.display = "none";
+        }
+
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("demo");
+            var captionText = document.getElementById("caption");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+            captionText.innerHTML = dots[slideIndex - 1].alt;
+        }
+    </script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+        </div>
+        <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

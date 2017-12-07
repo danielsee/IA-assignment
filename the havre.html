@@ -1,0 +1,537 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        button.accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+        }
+
+            button.accordion.active, button.accordion:hover {
+                background-color: #ccc;
+            }
+
+        div.panel {
+            padding: 0 18px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+        }
+    </style>
+    
+</head>
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+
+
+        <!-- Bootstrap core CSS -->
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="css/shop-homepage.css" rel="stylesheet">
+
+    </head>
+
+    <body>
+
+        <style>
+            button.accordion {
+                background-color: #eee;
+                color: #444;
+                cursor: pointer;
+                padding: 18px;
+                width: 100%;
+                border: none;
+                text-align: left;
+                outline: none;
+                font-size: 15px;
+                transition: 0.4s;
+            }
+
+                button.accordion.active, button.accordion:hover {
+                    background-color: #ccc;
+                }
+
+            div.panel {
+                padding: 0 18px;
+                background-color: white;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.2s ease-out;
+            }
+
+            body {
+                font-family: Verdana, sans-serif;
+                margin: 0;
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
+            .row > .column {
+                padding: 0 8px;
+            }
+
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+
+            .column {
+                float: left;
+                width: 25%;
+            }
+
+            /* The Modal (background) */
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 1;
+                padding-top: 100px;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: black;
+            }
+
+            /* Modal Content */
+            .modal-content {
+                position: relative;
+                background-color: #fefefe;
+                margin: auto;
+                padding: 0;
+                width: 90%;
+                max-width: 1200px;
+            }
+
+            /* The Close Button */
+            .close {
+                color: white;
+                position: absolute;
+                top: 10px;
+                right: 25px;
+                font-size: 35px;
+                font-weight: bold;
+            }
+
+                .close:hover,
+                .close:focus {
+                    color: #999;
+                    text-decoration: none;
+                    cursor: pointer;
+                }
+
+            .mySlides {
+                display: none;
+            }
+
+            .cursor {
+                cursor: pointer
+            }
+
+            /* Next & previous buttons */
+            .prev,
+            .next {
+                cursor: pointer;
+                position: absolute;
+                top: 50%;
+                width: auto;
+                padding: 16px;
+                margin-top: -50px;
+                color: white;
+                font-weight: bold;
+                font-size: 20px;
+                transition: 0.6s ease;
+                border-radius: 0 3px 3px 0;
+                user-select: none;
+                -webkit-user-select: none;
+            }
+
+            /* Position the "next button" to the right */
+            .next {
+                right: 0;
+                border-radius: 3px 0 0 3px;
+            }
+
+                /* On hover, add a black background color with a little bit see-through */
+                .prev:hover,
+                .next:hover {
+                    background-color: rgba(0, 0, 0, 0.8);
+                }
+
+            /* Number text (1/3 etc) */
+            .numbertext {
+                color: #f2f2f2;
+                font-size: 12px;
+                padding: 8px 12px;
+                position: absolute;
+                top: 0;
+            }
+
+            img {
+                margin-bottom: -4px;
+            }
+
+            .caption-container {
+                text-align: center;
+                background-color: black;
+                padding: 2px 16px;
+                color: white;
+            }
+
+            .demo {
+                opacity: 0.6;
+            }
+
+                .active,
+                .demo:hover {
+                    opacity: 1;
+                }
+
+            img.hover-shadow {
+                transition: 0.3s
+            }
+
+            .hover-shadow:hover {
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+            }
+
+
+            .topnav {
+                overflow: hidden;
+                background-color: #e9e9e9;
+            }
+
+                .topnav a {
+                    float: left;
+                    display: block;
+                    color: black;
+                    text-align: center;
+                    padding: 14px 16px;
+                    text-decoration: none;
+                    font-size: 17px;
+                }
+
+                    .topnav a:hover {
+                        background-color: #ddd;
+                        color: black;
+                    }
+
+                    .topnav a.active {
+                        background-color: #2196F3;
+                        color: white;
+                    }
+
+                .topnav .search-container {
+                    float: right;
+                }
+
+                .topnav input[type=text] {
+                    padding: 6px;
+                    margin-top: 8px;
+                    font-size: 17px;
+                    border: none;
+                }
+
+                .topnav .search-container button {
+                    float: right;
+                    padding: 6px 10px;
+                    margin-top: 8px;
+                    margin-right: 16px;
+                    background: #ddd;
+                    font-size: 17px;
+                    border: none;
+                    cursor: pointer;
+                }
+
+                    .topnav .search-container button:hover {
+                        background: #ccc;
+                    }
+
+            @media screen and (max-width: 600px) {
+                .topnav .search-container {
+                    float: none;
+                }
+
+                    .topnav a, .topnav input[type=text], .topnav .search-container button {
+                        float: none;
+                        display: block;
+                        text-align: left;
+                        width: 100%;
+                        margin: 0;
+                        padding: 14px;
+                    }
+
+                .topnav input[type=text] {
+                    border: 1px solid #ccc;
+                }
+            }
+        </style>
+
+
+
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="Asset Kayamas.html">Aset Kayamas</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="Asset Kayamas.html">
+                                Home <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="C:\IA Assingment\Register.html">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="faq.html">FAQ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about us.html">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="booking.html">Booking</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <img src="http://asetkayamas.com/wp-content/uploads/2017/08/havrelogo.png" class="vc_single_image-img attachment-full">
+        <button class="accordion">Concept</button>
+        <div class="panel">
+            <p>Inspired by its prime location, ‘HAVRE’, French for ‘haven’, exudes an aura of serenity lets one bask in the wonders of nature and soothe their weary bodies without worry, disturbance and prolonged travel – perfectly embodying an exclusive sanctuary set in the midst of a cacophonous metropolitan landscape</p>
+            <p>Gently hidden within the blossoming Bukit Jalil, THE HAVRE is a utopic 2-block condominium that seamlessly melds mythical Greek and Babylonian elements with extraordinary architectural form.</p>
+
+        </div>
+
+        <button class="accordion">feature & Facility</button>
+        <div class="panel">
+            <p>Bask in the sunlit majesty of the Icarus lobby as you enter THE HAVRE, and let wisdom, self-expression and serenity flourish as you immerse yourself in the culmination of Greek, Babylonian and contemporary architectural design.</p>
+            <p>
+                Experience an exclusive sanctuary set in the midst of a bustling metropolitan landscape, cocooned by lush greenery reminiscent of the Hanging Gardens of Babylonia.
+            </p>
+            <p>
+                Soothe your weary soul with a breezy stroll across the serene Odyssey recreational trek; find serenity in a soothing cup of tea by the tranquil waterfalls within THE HAVRE; or challenge your very limits at Elevated Infinite Jogging Track. Standing out from all of these is the highest Link Bridge Gymnasium that release your endorphins towards a fitter and healthier lifestyle.
+            </p>
+            <p>
+                Under THE HAVRE’s very own security detail and CCTV system, you and your loved ones may live, explore, and luxuriate in transcendental peace.
+            </p>
+            <strong>List of Faclities:Podium(level6)</strong>
+            <u1>
+                <li>Cloud 9 Ramp</li>
+                <li>Infinity Jogging Track</li>
+                <li>Cloud 9 Cabana</li>
+                <li>Cloud 9 Deck</li>
+                <li>Sunken Wading Pool</li>
+                <li>Shallow Area</li>
+                <li>Pool Sunken Lounge</li>
+                <li>Pool Deck</li>
+                <li>Cloud 9 Ramp</li>
+                <li>Infinity Jogging Track</li>
+                <li>Cloud 9 Cabana</li>
+                <li>Cloud 9 Deck</li>
+                <li>Pool Planter</li>
+                <li>Hammock Groove</li>
+                <li>Buffer Planter</li>
+                <li>Sky Bridge</li>
+            </u1>
+            <strong>List of Facilities: Sky Garden (Level 40)</strong>
+            <u1>
+                <li>Multipurpose Hall</li>
+                <li>Mini Futsal</li>
+                <li>Half BasketBall Court</li>
+                <li>Table Tennis</li>
+                <li>Badminton Court</li>
+                <li>Sky Deck</li>
+                <li>Function Room</li>
+                <li>Games Room</li>
+                <li>Yoga Deck</li>
+                <li>Children’s Playground</li>
+                <li>Sand Pit</li>
+                <li>Pilates Deck</li>
+                <li>BOH</li>
+                <li>Sky Bridge Gymnasium</li>
+            </u1>
+
+        </div>
+
+        <button class="accordion">Location</button>
+        <div class="panel">
+            <p>
+                Ideally situated on the fringe of the city, THE HAVRE at Bukit Jalil is where exclusivity and accessibility meet. Journey great distances to and from home without worry and trouble, as THE HAVRE is located within a gentle arm’s reach from the Bukit Jalil Highway and the Shah Alam Highway, and is just a light 600m away from the Muhibbah LRT station.
+            </p>
+            <p>
+                Luxuriate to your heart’s content without the plague of distant travel, as THE HAVRE is fitted with a covered walkway, dedicated to residents of THE HAVRE, that connects to a megamall as well as an LRT station.
+            </p>
+            <strong>Amenities</strong>
+            <u1>
+                <li>600m to LRT Station.</li>
+                <li>300m to Megamall 1.</li>
+                <li>2km to Megamall 2.</li>
+                <li>5km to The Mines.</li>
+                <li>10km to Bandar Puchong.</li>
+                <li>10km to Bandar Sunway.</li>
+                <li>13km to KL City Center.</li>
+            </u1>
+            <img width="577" height="455" src="http://asetkayamas.com/wp-content/uploads/2017/08/plan.png" class="vc_single_image-img attachment-full" alt="" srcset="http://asetkayamas.com/wp-content/uploads/2017/08/plan.png 577w, http://asetkayamas.com/wp-content/uploads/2017/08/plan-300x237.png 300w" sizes="(max-width: 577px) 100vw, 577px">
+
+        </div>
+        <button class="accordion">Unit Plan and Specification</button>
+        <div class="panel">
+            <div class="wpb_wrapper">
+                <h2 style="text-align: left;font-family:Abril Fatface;font-weight:400;font-style:normal" class="vc_custom_heading heading_Type">TYPE A</h2>
+                <h2 style="text-align: left;font-family:Abril Fatface;font-weight:400;font-style:normal" class="vc_custom_heading subheading_Type">Built-Up Area: 1,075sqft</h2>
+                <div class="wpb_single_image wpb_content_element vc_align_left">
+                    <figure class="wpb_wrapper vc_figure">
+                        <div class="vc_single_image-wrapper   vc_box_border_grey">
+                            <span class="fot_room">3</span><img src="http://asetkayamas.com/wp-content/themes/nrgevent/assets/img/bedg.png" class="vc_single_image-img attachment-full">
+                            <span class="fot_room">2</span><img src="http://asetkayamas.com/wp-content/themes/nrgevent/assets/img/bathroomg.png" class="vc_single_image-img attachment-full">
+                        </div>
+                    </figure>
+                </div>
+                <div class="wpb_single_image wpb_content_element vc_align_left">
+
+                </div>
+                <div class="vc_btn3-container  button_prop type_room vc_btn3-inline">
+                    <a class="vc_general vc_btn3 vc_btn3-size-xs vc_btn3-shape-rounded vc_btn3-style-modern vc_btn3-color-white" href="http://asetkayamas.com/wp-content/uploads/2017/08/TYPEA-HERMING.png" title="">VIEW FLOOR PLAN / SPEC</a>
+
+                </div>
+                <div class="vc_column-inner ">
+                    <div class="wpb_wrapper">
+                        <h2 style="text-align: left;font-family:Abril Fatface;font-weight:400;font-style:normal" class="vc_custom_heading heading_Type">TYPE B</h2>
+                        <h2 style="text-align: left;font-family:Abril Fatface;font-weight:400;font-style:normal" class="vc_custom_heading subheading_Type">Built-Up Area: 1,075sqft</h2>
+                        <div class="wpb_single_image wpb_content_element vc_align_left">
+                            <figure class="wpb_wrapper vc_figure">
+                                <div class="vc_single_image-wrapper   vc_box_border_grey">
+                                    <span class="fot_room">3</span><img src="http://asetkayamas.com/wp-content/themes/nrgevent/assets/img/bedg.png" class="vc_single_image-img attachment-full">
+                                    <span class="fot_room">2</span><img src="http://asetkayamas.com/wp-content/themes/nrgevent/assets/img/bathroomg.png" class="vc_single_image-img attachment-full">
+                                </div>
+                            </figure>
+                        </div>
+                        <div class="wpb_single_image wpb_content_element vc_align_left">
+
+                        </div>
+                        <div class="vc_btn3-container  button_prop type_room vc_btn3-inline">
+                            <a class="vc_general vc_btn3 vc_btn3-size-xs vc_btn3-shape-rounded vc_btn3-style-modern vc_btn3-color-white" href="http://asetkayamas.com/wp-content/uploads/2017/08/TYPEB-HERMING.png" title="">VIEW FLOOR PLAN / SPEC</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+        <script>
+            var acc = document.getElementsByClassName("accordion");
+            var i;
+
+            for (i = 0; i < acc.length; i++) {
+                acc[i].onclick = function () {
+                    this.classList.toggle("active");
+                    var panel = this.nextElementSibling;
+                    if (panel.style.maxHeight) {
+                        panel.style.maxHeight = null;
+                    } else {
+                        panel.style.maxHeight = panel.scrollHeight + "px";
+                    }
+                }
+            }
+        </script>
+
+        <script>
+            function openModal() {
+                document.getElementById('myModal').style.display = "block";
+            }
+
+            function closeModal() {
+                document.getElementById('myModal').style.display = "none";
+            }
+
+            var slideIndex = 1;
+            showSlides(slideIndex);
+
+            function plusSlides(n) {
+                showSlides(slideIndex += n);
+            }
+
+            function currentSlide(n) {
+                showSlides(slideIndex = n);
+            }
+
+            function showSlides(n) {
+                var i;
+                var slides = document.getElementsByClassName("mySlides");
+                var dots = document.getElementsByClassName("demo");
+                var captionText = document.getElementById("caption");
+                if (n > slides.length) { slideIndex = 1 }
+                if (n < 1) { slideIndex = slides.length }
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" active", "");
+                }
+                slides[slideIndex - 1].style.display = "block";
+                dots[slideIndex - 1].className += " active";
+                captionText.innerHTML = dots[slideIndex - 1].alt;
+            }
+        </script>
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        <!-- Footer -->
+        <footer class="py-5 bg-dark">
+            <div class="container">
+                <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+            </div>
+            <!-- /.container -->
+        </footer>
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    </body>
+
+</html>
+
+</body>
+    </html>
+                
